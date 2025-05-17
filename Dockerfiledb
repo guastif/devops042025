@@ -1,0 +1,14 @@
+FROM mariadb:10.6
+#
+# na linha LABEL maintainer=  use seu identificador e seu e-mail cadastrado
+#
+LABEL maintainer="Jocimar Guasti  sr.jocimar@gmail.com"
+ENV MYSQL_ROOT_PASSWORD=12345678
+ENV MYSQL_DATABASE=backup
+ENV MYSQL_USER=express
+ENV MYSQL_PASSWORD=AllSafe0!
+EXPOSE 3306
+COPY ./db/backup.sql /docker-entrypoint-initdb.d/
+WORKDIR /docker-entrypoint-initdb.d/
+CMD ["mysqld"]
+
